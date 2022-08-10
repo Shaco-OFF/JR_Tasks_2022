@@ -1,4 +1,4 @@
-package com.javarush.task.task18.task1819;
+package task1819;
 
 import java.io.*;
 import java.util.ArrayList;
