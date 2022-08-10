@@ -16,18 +16,18 @@ public class Solution {
         String firstFileName = reader.readLine();
         String secondFileName = reader.readLine();
 
+        reader.close();
+
         List<Integer> listBytes = new ArrayList<>();
         int data;
 
         try(BufferedReader readerFirst = new BufferedReader(new FileReader(firstFileName));
             BufferedReader readerSecond = new BufferedReader(new FileReader(secondFileName))) {
 
-            while (readerSecond.ready()) {
-                data = readerSecond.read();
+            while ((data = readerSecond.read()) > -1) {
                 listBytes.add(data);
             }
-            while (readerFirst.ready()) {
-                data = readerFirst.read();
+            while ((data = readerFirst.read()) > -1) {
                 listBytes.add(data);
             }
         }catch (IOException e) {
