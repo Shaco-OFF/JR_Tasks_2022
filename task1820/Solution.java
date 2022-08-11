@@ -22,6 +22,12 @@ public class Solution {
         try(BufferedReader reader = new BufferedReader(new FileReader(firstFileName));
             BufferedWriter writer = new BufferedWriter(new FileWriter(secondFileName))) {
 
+            /*
+            lines() - возвращает поток, элементами которого являются строки считанные BufferedReader
+            flatMap() - преобразует каждый элемент потока, в данном случае разделяет элементы потока (строки)
+            map() - преобразует каждый элемент потока, в данном случае округляет до ближайшего целого
+            joining() - объединяет элементы потока с заданным разделителем
+             */
             String numbers = reader.lines().flatMap(x -> Arrays.stream(x.split(" ")))
                             .map(x -> String.format("%s", Math.round(Double.parseDouble(x))))
                             .collect(Collectors.joining(" "));
