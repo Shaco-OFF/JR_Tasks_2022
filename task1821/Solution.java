@@ -1,33 +1,31 @@
-package com.javarush.task.task18.task1821;
+package task1821;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
-/* 
+/*
 Встречаемость символов
+C:/Users/Anton/Desktop/1.txt
 */
 
 public class Solution {
     public static void main(String[] args) {
-        try(BufferedReader readerFileName = new BufferedReader(new InputStreamReader(System.in));
-            BufferedReader reader = new BufferedReader(new FileReader(readerFileName.readLine()))) {
+        try(BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
 
-            List<Integer> bytes = new ArrayList<>();
+            Map<Integer, Integer> bytes = new TreeMap<>();
             int data;
+            int count;
 
             while ((data = reader.read()) > -1) {
-                if (!bytes.contains(data)) {
-                    bytes.add(data);
-                }
+                count = bytes.containsKey(data) ? bytes.get(data) + 1 : 1;
+                bytes.put(data, count);
             }
-            Collections.sort(bytes);
-            bytes.stream().collect(Collectors.joining(" "));
+            bytes.forEach((x, y) -> System.out.println( (char) x.intValue() + " " + y));
+
         }catch (IOException e) {
             e.printStackTrace();
         }
