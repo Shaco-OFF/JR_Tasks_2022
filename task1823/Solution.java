@@ -27,7 +27,6 @@ public class Solution {
 
     public static class ReadThread extends Thread {
 
-
         public ReadThread(String fileName) {
             super(fileName);
             start();
