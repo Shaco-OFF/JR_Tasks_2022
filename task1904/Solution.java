@@ -39,12 +39,12 @@ public class Solution {
         public Person read() throws IOException {
 
             String line = fileScanner.nextLine();
-            String[] personData = line.split(" ");
+            String[] personData = line.split(" ", 4);
 
             Date birthday = null;
             try {
                 birthday = new SimpleDateFormat("dd MM yyyy", Locale.ENGLISH)
-                        .parse(line.substring(line.length() - 10));
+                        .parse(personData[3]);
             }catch (ParseException e) {
                 e.printStackTrace();
             }
