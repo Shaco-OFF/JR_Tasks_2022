@@ -16,7 +16,36 @@ public class Solution {
     }
 
     public static void main(String[] args) {
+        Customer customer = new Customer() {
+            @Override
+            public String getCompanyName() {
+                return "JavaRush Ltd.";
+            }
 
+            @Override
+            public String getCountryName() {
+                return "Ukraine";
+            }
+        };
+
+        Contact contact = new Contact() {
+            @Override
+            public String getName() {
+                return "Ivanov, Ivan";
+            }
+
+            @Override
+            public String getPhoneNumber() {
+                return "+380(50)123-4567";
+            }
+        };
+
+        DataAdapter dataAdapter = new DataAdapter(customer, contact);
+        System.out.println(dataAdapter.getCountryCode());
+        System.out.println(dataAdapter.getCompany());
+        System.out.println(dataAdapter.getContactFirstName());
+        System.out.println(dataAdapter.getContactLastName());
+        System.out.println(dataAdapter.getDialString());
     }
 
     public static class DataAdapter implements RowItem {
