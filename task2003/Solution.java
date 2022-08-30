@@ -17,7 +17,7 @@ public class Solution {
     public static void save(OutputStream outputStream) throws Exception {
 
         Properties properties = new Properties();
-        runtimeStorage.forEach(properties::setProperty);
+        properties.putAll(runtimeStorage);
         properties.store(outputStream, null);
     }
 
